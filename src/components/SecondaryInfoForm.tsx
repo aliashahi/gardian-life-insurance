@@ -2,10 +2,10 @@ import { Input } from "./Input";
 import { useState } from "react";
 import Checkbox from "./Checkbox";
 import Textarea from "./Textarea";
-import { ACTIONS, FieldPropertys } from "../shared";
 import { useRecoilState } from "recoil";
+import ErrorMessage from "./ErrorMessage";
 import FooterActions from "./FooterActions";
-import ProgressIndicator from "./ProgressIndicator";
+import { ACTIONS, FieldPropertys } from "../shared";
 import { BtnConfig, SecondaryFormDto, stepIndexState } from "../shared";
 
 const btnsConfig: BtnConfig[] = [
@@ -19,16 +19,16 @@ const btnsConfig: BtnConfig[] = [
     label: "ثبت نهایی",
     class: "btn-success",
   },
-  {
-    id: ACTIONS.CLEAR_FORM,
-    label: "پاک کردن فرم",
-    class: "btn-outline btn-error",
-  },
+  // {
+  //   id: ACTIONS.CLEAR_FORM,
+  //   label: "پاک کردن فرم",
+  //   class: "btn-outline btn-error",
+  // },
 ];
 
 const getBoilerplateOfForm = () => ({
-  smoke_sigaret: { label: "سیگار میکشم", id: "smoke_sigaret", value: null },
-  smoke_pot: { label: "قلیان میکشم", id: "smoke_pot", value: null },
+  smoke_sigaret: { label: "سیگار میکشم", id: "smoke_sigaret", value: false },
+  smoke_pot: { label: "قلیان میکشم", id: "smoke_pot", value: false },
   pot_count: { label: "تعداد قلیان در روز", id: "pot_count", value: null },
   sigaret_count: {
     label: "تعداد سیگار در روز",
@@ -63,6 +63,7 @@ export default function SecondaryInfoForm(props: any) {
   const onChangeValue = (event: any) => {
     const id = event.target.name;
     const value = event.target.value;
+    console.log(id, value);
     const new_form: any = { ...form };
     setForm(
       setValidationMessages(
@@ -81,12 +82,25 @@ export default function SecondaryInfoForm(props: any) {
   const checkValidation = (): { valid: boolean; message: string | null } => {
     let valid = true;
     let message = null;
-    Object.entries(form).forEach((field: [string, FieldPropertys]) => {
-      if (valid && (!field[1].value || field[1].error)) {
-        valid = false;
-        message = `لطفا اطلاعات وارد شده در فیلد "${field[1].label}" را دوباره بررسی کنید`;
-      }
-    });
+    if (
+      form.smoke_pot.value == true &&
+      (form.pot_count == null ||
+        (form.pot_count.value as number) <= 0 ||
+        form.pot_count.value == "")
+    ) {
+      valid = false;
+      message = "قلیان";
+      message = `لطفا فیلد تعداد "${message}" را پر کنید`;
+    } else if (
+      form.smoke_sigaret.value == true &&
+      (form.sigaret_count == null ||
+        (form.sigaret_count.value as number) <= 0 ||
+        form.sigaret_count.value == "")
+    ) {
+      valid = false;
+      message = "سیگار";
+      message = `لطفا فیلد تعداد "${message}" را پر کنید`;
+    }
     return {
       valid,
       message,
@@ -169,6 +183,7 @@ export default function SecondaryInfoForm(props: any) {
       {/* ProgressIndicator */}
       {/* <ProgressIndicator max={5} value={2} /> */}
       {/* footer (actions) */}
+      {formMessage ? <ErrorMessage message={formMessage} /> : ""}
       <FooterActions btnsConfig={btnsConfig} onAction={onActionEvent} />
     </div>
   );

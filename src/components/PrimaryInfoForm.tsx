@@ -1,12 +1,12 @@
+import Select from "./Select";
 import { Input } from "./Input";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
+import ErrorMessage from "./ErrorMessage";
 import FooterActions from "./FooterActions";
 import { ACTIONS, FieldPropertys } from "../shared";
 import { BtnConfig, stepIndexState } from "../shared";
 import { INSURANCE_BRANCHES, PrimaryFormDto } from "../shared";
-import ErrorMessage from "./ErrorMessage";
-import Select from "./Select";
 
 const btnsConfig: BtnConfig[] = [
   {
@@ -14,11 +14,11 @@ const btnsConfig: BtnConfig[] = [
     label: "صفحه بعد",
     class: "btn-success",
   },
-  {
-    id: ACTIONS.CLEAR_FORM,
-    label: "پاک کردن فرم",
-    class: "btn-outline btn-error",
-  },
+  // {
+  //   id: ACTIONS.CLEAR_FORM,
+  //   label: "پاک کردن فرم",
+  //   class: "btn-outline btn-error",
+  // },
 ];
 
 const getBoilerplateOfForm = () => ({
@@ -84,6 +84,12 @@ export default function PrimaryInfoForm() {
         message = `لطفا اطلاعات وارد شده در فیلد "${field[1].label}" را دوباره بررسی کنید`;
       }
     });
+
+    if (valid && form.age.value && (form.age.value as number) > 45) {
+      valid = false;
+      message = `متاسفانه بیمه عمر برای افراد زیر 45 سال تعریف میشود`;
+    }
+
     return {
       valid,
       message,

@@ -1,6 +1,7 @@
 export interface InputDto {
   id: string;
   label: string;
+  value?: string | boolean | number | null;
   onChange?: (event: any) => void;
   disabled?: boolean;
   error?: string;

@@ -12,6 +12,7 @@ export function Input(props: InputDto) {
         </span>
       </label>
       <input
+        value={props.value as string}
         name={props.id}
         type={props.type}
         placeholder={props.placeholder ?? ""}

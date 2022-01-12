@@ -9,6 +9,7 @@ export default function Textarea(props: InputDto) {
       <textarea
         className="textarea h-24 textarea-bordered"
         placeholder={props.placeholder ?? ""}
+        onChange={props.onChange}
       ></textarea>
     </div>
   );

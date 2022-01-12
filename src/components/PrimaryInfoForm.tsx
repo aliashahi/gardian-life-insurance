@@ -18,7 +18,6 @@ export default function PrimaryInfoForm() {
   });
 
   const createErrorMessage = (id: string, value: any) => {
-    console.log(id, value);
     return undefined;
   };
   const onChangeValue = (event: any) => {

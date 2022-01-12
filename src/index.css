@@ -26,3 +26,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.main-bg {
+  background-image: url("./assets/family-bg.jpg");
+  background-size: auto 100vh;
+}

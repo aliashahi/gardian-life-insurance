@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { InputDto } from "../shared";
+import { InputDto } from "..";
 
 export function Input(props: InputDto) {
   const [focused, setFocused] = useState<boolean>(false);

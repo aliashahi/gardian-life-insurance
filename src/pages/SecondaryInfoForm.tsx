@@ -1,11 +1,8 @@
-import { Input } from "./Input";
 import { useState } from "react";
-import Checkbox from "./Checkbox";
-import Textarea from "./Textarea";
 import { useRecoilState } from "recoil";
-import ErrorMessage from "./ErrorMessage";
 import FooterActions from "./FooterActions";
 import { ACTIONS, FieldPropertys } from "../shared";
+import { ErrorMessage, Textarea, Checkbox, Input } from "../shared";
 import { BtnConfig, SecondaryFormDto, stepIndexState } from "../shared";
 
 const btnsConfig: BtnConfig[] = [

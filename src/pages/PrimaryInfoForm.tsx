@@ -1,11 +1,9 @@
-import Select from "./Select";
-import { Input } from "./Input";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import ErrorMessage from "./ErrorMessage";
 import FooterActions from "./FooterActions";
 import { ACTIONS, FieldPropertys } from "../shared";
 import { BtnConfig, stepIndexState } from "../shared";
+import { ErrorMessage, Input, Select } from "../shared";
 import { INSURANCE_BRANCHES, PrimaryFormDto } from "../shared";
 
 const btnsConfig: BtnConfig[] = [

@@ -1,6 +1,6 @@
-import { InputDto } from "../shared";
+import { InputDto } from "..";
 
-export default function Checkbox(props: InputDto) {
+export function Checkbox(props: InputDto) {
   const onCheckboxChange = (e: any) => {
     if (typeof props.onChange === "function") {
       props.onChange({

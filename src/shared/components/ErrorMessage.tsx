@@ -1,4 +1,4 @@
-export default function ErrorMessage({ message }: { message: string }) {
+export function ErrorMessage({ message }: { message: string }) {
   return (
     <div className="alert alert-error my-2">
       <div className="flex-1">

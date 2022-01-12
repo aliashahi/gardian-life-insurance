@@ -1,7 +1,6 @@
-import React from "react";
-import { SelectDto } from "../shared";
+import { SelectDto } from "..";
 
-export default function Select(props: SelectDto) {
+export function Select(props: SelectDto) {
   return (
     <div className="w-full md:w-1/3">
       <label className="label">

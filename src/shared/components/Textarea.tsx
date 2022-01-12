@@ -1,6 +1,6 @@
-import { InputDto } from "../shared";
+import { InputDto } from "..";
 
-export default function Textarea(props: InputDto) {
+export function Textarea(props: InputDto) {
   return (
     <div className="form-control w-full">
       <label className="label">

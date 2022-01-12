@@ -1,5 +1,4 @@
-import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { stepIndexState } from "../shared";
 
 export default function Stepper() {

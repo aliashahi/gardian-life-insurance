@@ -1,8 +1,8 @@
 import Header from "./Header";
 import Stepper from "./Stepper";
 import { useRecoilValue } from "recoil";
+import { stepIndexState } from "../shared";
 import PrimaryInfoForm from "./PrimaryInfoForm";
-import { stepIndexState } from "../shared/atoms";
 import SecondaryInfoForm from "./SecondaryInfoForm";
 
 export function Main() {

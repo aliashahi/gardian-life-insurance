@@ -6,6 +6,7 @@ export interface InputDto {
   disabled?: boolean;
   error?: string;
   required?: boolean;
+  validateFn?: (value: any, field?: InputDto) => boolean;
   className?: string;
   hide?: boolean;
   type: string;

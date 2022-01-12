@@ -107,7 +107,8 @@ export default function PrimaryInfoForm() {
 
   return (
     <div>
-      <form className="flex flex-wrap">
+      <div className="h-[1px] w-4/5 m-auto bg-gray-200 my-4 rounded-full"></div>
+      <form className="flex flex-wrap ">
         <Input
           type="text"
           id={form.first_name.id}

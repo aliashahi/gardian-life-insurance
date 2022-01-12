@@ -112,6 +112,7 @@ export default function SecondaryInfoForm(props: any) {
 
   return (
     <div>
+      <div className="h-[1px] w-4/5 m-auto bg-gray-200 my-4 rounded-full"></div>
       <form className="flex flex-wrap mt-4">
         <Checkbox
           id={form.smoke_sigaret.id}
